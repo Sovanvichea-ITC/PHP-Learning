@@ -8,9 +8,11 @@ class ProductsController extends Controller{
 
     public function index()
     {
+        //varible
         $title = "Welcom to my Larvel 8 course";
         $description = "Create by Dary";
 
+        // array
         $data = ['productOne' => 'iphone',
                  'productTwo' => 'Samsung'
                 ];
@@ -32,7 +34,8 @@ class ProductsController extends Controller{
         //                               'description' => $description
         //                             ]);
 
-        return view('products.index',['data' => $data,
+        return view('products.index',['data1' => $data['productTwo'],
+                                      'data' => $data,
                                       'title' => $title,
                                       'description' => $description
                                      ]);

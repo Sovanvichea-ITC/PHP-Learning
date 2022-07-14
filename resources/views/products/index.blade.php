@@ -11,12 +11,31 @@
 <body>
     <h1> Hello! I am Product page.</h1>
 
+    <p>{{ $data1}}</p>
+
     @foreach ($data as $item)
         <p>{{ $item }}</p>
     @endforeach
 
+    @for ($i = 0; $i < 3; $i++)
+
+        <p>
+            {{ $i }}
+        </p>
+
+    @endfor
+
     <p>{{ $title }}</p>
     <P>{{ $description }}</P>
+
+
+
+    {{-- <form method="POST" action="{{ url('products') }}">
+
+        <input type="text" name="input">
+
+    </form> --}}
+
 
 </body>
 

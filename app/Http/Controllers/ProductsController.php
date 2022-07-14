@@ -15,22 +15,27 @@ class ProductsController extends Controller{
                  'productTwo' => 'Samsung'
                 ];
 
-
-
-        //Compact method
-
+//Compact method
+        //1.
         // return view('products.index',
         // compact('title','description'));
 
+        //2.
         // return view('products.index')->with('title',$title);
 
-    //     return view('products.index')->with('data',$data);
+        //3.
+        // return view('products.index')->with('data',$data);
 
-    return view('products.index',['data' => $data,
-                                  'title' => $title,
-                                  'description' => $description
-                                ]);
+        //4.
+        // return view('products.index',['data' => $data,
+        //                               'title' => $title,
+        //                               'description' => $description
+        //                             ]);
 
+        return view('products.index',['data' => $data,
+                                      'title' => $title,
+                                      'description' => $description
+                                     ]);
     }
 
     public function about(){

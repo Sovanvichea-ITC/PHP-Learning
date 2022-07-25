@@ -365,10 +365,10 @@
                                         <label for="checkbox1"></label>
                                     </span>
                                 </td>
-                                <td>{{ $item['name'] }}</td>
-                                <td>{{ $item['email'] }}</td>
-                                <td>{{ $item['address'] }}</td>
-                                <td>{{ $item['phone'] }}</td>
+                                <td>{{ $item->name}}</td>
+                                <td>{{ $item->email}}</td>
+                                <td>{{ $item->address}}</td>
+                                <td>{{ $item->phone}}</td>
                                 <td>
                                     <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i
                                             class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller
 {
@@ -20,6 +21,7 @@ class ItemController extends Controller
         //           {'id'=>'2','name'=>'Dara Dara'},
         //           {'id'=>'3','name'=>'Dara Dara'},
         //          ]);
+        $dt = DB::table('items')->get();
 
         $json = '
                 [{
@@ -52,12 +54,10 @@ class ItemController extends Controller
         array_push($datas , $datas1);
 
        // dd($datas);
-
-
        //dd($datas);
-       $d = 'Hello';
-
-        return view('viewitem',['datas' => $datas],['d'=>$d]);
+       
+        $dt = DB::select('SELECT * from items');
+        return view('viewitem',['datas' => $dt]);
     }
 
     /**
@@ -81,32 +81,35 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         //
+
          $name = $request->input('name');
          $email = $request->input('email');
          $address = $request->input('address');
          $phone = $request->input('phone');
 
          $json ='
-                [{
+                [
                     "id": "02",
                     "name": "'. $name .'",
                     "email": "'. $email .'",
                     "address": "'. $address .'",
                     "phone":"'. $phone .'"
-                }]';
+                ]';
 
-         //dd($name,$email,$address,$phone);
-        //dd($json);
+        $data = array('name'=>$name,"email"=>$email,"address"=>$address,"phone"=>$phone);
 
-         //dd($request->input('name'));
+        $ifhave = DB::select('SELECT * from items Where name = :name',['name'=> $name]);
 
+        //dd($ifhave);
+        if($ifhave){
+            //dd($ifhave);
+        }else{
+            DB::table('items')->insert($data);
+        }
 
-        $datas1 = json_decode($json, true);
-       // dd($datas);
-
-
-        return view('viewitem',['datas' => $datas1]);
-
+        //$dt = DB::table('items')->get();
+        $dt = DB::select('SELECT * from items');
+        return view('viewitem',['datas' => $dt]);
     }
 
     /**
